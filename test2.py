@@ -48,7 +48,7 @@ for i in range(0,6):
     print(("#" + str(i) + " P" + str(AL5_DefaultPos) + "\r").encode())
     sp.write(("#" + str(i) + " P" + str(AL5_DefaultPos) + "\r").encode())
 
-targets = [[4,4], [4,6], [6,6], [6,4], [4,4]]
+targets = [[4,2], [4,10], [6,10], [6,2], [4,2]]
 
 while cont:
     
@@ -66,9 +66,9 @@ while cont:
 
 
     
-    targetQ = str(input("Quit ? (Y/N) "))
-    if targetQ == "y":
-        cont = False
+    #targetQ = str(input("Quit ? (Y/N) "))
+    #if targetQ == "y":
+    #    cont = False
 
 # Set all motors to idle/unpowered (pulse = 0)
 print("< Idling motors... >");
