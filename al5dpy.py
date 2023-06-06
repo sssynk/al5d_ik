@@ -91,7 +91,7 @@ def al5_2D_IK(targetXYZGWAWR):
     # Check elbow/shoulder angle for error
     if((Elbow <= 0) or (Shoulder <= 0)):
         return 3
-    Wrist = fabs(wa - Elbow - Shoulder) - 80
+    Wrist = fabs(wa - Elbow - Shoulder) - 100
     
     # Return the new values
     motors_SEWBZWrG = (Shoulder, Elbow, Wrist, z, g, wr)
@@ -151,7 +151,7 @@ def al5_3D_IK(targetXYZGWAWR):
     if((Elbow <= 0) or (Shoulder <= 0) or (Base <= 0)):
         return 3
 
-    Wrist = abs(wa - Elbow - Shoulder) - 80
+    Wrist = abs(wa - Elbow - Shoulder) - 100
 
     # Return the new values
     motors_BSEWBZWrG = (Base, Shoulder, Elbow, Wrist, z, g, wr)
