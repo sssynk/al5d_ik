@@ -1,7 +1,7 @@
 # 2017-07-12 by scharette modified by sssynk
 # 2D ik
 
-from math import sqrt, atan, acos, fabs
+from math import sqrt, atan, acos, fabs, atan2
 
 # Define legnth of AL5 sections
 # if AL5A
@@ -103,6 +103,61 @@ def al5_2D_IK(targetXYZGWAWR):
     # >>> debug >>>
     
     return (motors_SEWBZWrG)
+
+def al5_3D_IK(targetXYZGWAWR):
+    x = targetXYZGWAWR[0]
+    y = targetXYZGWAWR[1]
+    z = targetXYZGWAWR[2]
+    g = targetXYZGWAWR[3]
+    wa = targetXYZGWAWR[4]
+    wr = targetXYZGWAWR[5]
+    
+    Elbow = 0
+    Shoulder = 0
+    Wrist = 0
+    Base = 0
+    
+    # Get distance of the wrist in the XY plane
+    floatM = sqrt((y * y) + (x * x))
+    
+    # Get angle formed by the line that goes from the robot base to the wrist
+    floatA = atan2(z, floatM)
+    
+    # Get distance of the wrist from the robot base
+    floatR = sqrt((z * z) + (floatM * floatM))
+    
+    # Check position for error
+    if(floatR <= 0):
+        return 1
+    
+    # Get first angle of the triangle formed by the wrist, robot base, and link A
+    floatA1 = acos((A * A - B * B + floatR * floatR) / (2 * A * floatR))
+    
+    # Calculate shoulder angle
+    floatShoulder = floatA + floatA1
+    
+    # Calculate elbow angle
+    floatElbow = acos((A * A + B * B - floatR * floatR) / (2 * A * B))
+    
+    # Calculate base angle
+    floatBase = atan2(y, x)
+
+    # Obtain angles in degrees
+    Elbow = degrees(floatElbow)
+    Shoulder = degrees(floatShoulder)
+    Base = degrees(floatBase)
+
+    # Check calculated angles for errors
+    if((Elbow <= 0) or (Shoulder <= 0) or (Base <= 0)):
+        return 3
+
+    Wrist = abs(wa - Elbow - Shoulder) - 90
+
+    # Return the new values
+    motors_BSEWBZWrG = (Base, Shoulder, Elbow, Wrist, z, g, wr)
+
+    return (motors_BSEWBZWrG)
+
 
 def al5_moveMotors(motors_SEWBZWrG, speed_SEWBZWrG, serial):
     

@@ -1,4 +1,4 @@
-# 2017-07-12 by scharette
+# 2017-07-12 by scharette modified by sssynk
 # Basic 2D IK example of AL5 + Python
 
 # Obtain required libraries
