@@ -48,7 +48,7 @@ for i in range(0,6):
     print(("#" + str(i) + " P" + str(AL5_DefaultPos) + "\r").encode())
     sp.write(("#" + str(i) + " P" + str(AL5_DefaultPos) + "\r").encode())
 
-targets = [[4,2], [4,10], [6,10], [6,2], [4,2]]
+targets = [[4,4], [4,10], [6,10], [6,4], [4,4]]
 
 while cont:
     
