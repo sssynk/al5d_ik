@@ -9,7 +9,7 @@ from al5dpy import al5_3D_IK, al5_moveMotors
 # Constants - Speed in µs/s, 4000 is roughly equal to 360°/s or 60 RPM
 #           - A lower speed will most likely be more useful in real use, such as 100 µs/s (~9°/s)
 CST_SPEED_MAX = 4000
-CST_SPEED_DEFAULT = 300
+CST_SPEED_DEFAULT = 800
 
 # Create and open a serial port
 sp = serial.Serial('/dev/serial0', 115200)
