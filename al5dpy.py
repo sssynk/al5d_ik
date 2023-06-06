@@ -1,7 +1,7 @@
 # 2017-07-12 by scharette modified by sssynk
 # 2D ik
 
-from math import sqrt, atan, acos, fabs, atan2
+from math import sqrt, atan, acos, fabs, atan2, degrees
 
 # Define legnth of AL5 sections
 # if AL5A
